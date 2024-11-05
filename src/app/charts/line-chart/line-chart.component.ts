@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-line-chart',
@@ -6,38 +6,12 @@ import { Component } from '@angular/core';
   styleUrl: './line-chart.component.scss',
 })
 export class LineChartComponent {
-  view: [number, number] = [700, 400]; // Chart dimensions
-
-  // Sample data
-  data = [
-    {
-      name: 'Germany',
-      series: [
-        { name: '2010', value: 7300000 },
-        { name: '2011', value: 8940000 },
-      ],
-    },
-    {
-      name: 'USA',
-      series: [
-        { name: '2010', value: 7870000 },
-        { name: '2011', value: 8270000 },
-      ],
-    },
-    {
-      name: 'France',
-      series: [
-        { name: '2010', value: 5000002 },
-        { name: '2011', value: 5800000 },
-      ],
-    },
-  ];
-
-  // Chart options
-  showLegend = false;
-  showXAxis = true;
-  showYAxis = true;
-  showXAxisLabel = true;
-  showYAxisLabel = true;
-  xAxisLabel = 'Dates';
+  @Input() view: [number, number] = [0, 0];
+  @Input() data: { name: Date; value: number }[] = [];
+  @Input() showLegend: boolean = false;
+  @Input() showXAxis: boolean = true;
+  @Input() showYAxis: boolean = true;
+  @Input() showXAxisLabel: boolean = true;
+  @Input() showYAxisLabel: boolean = true;
+  @Input() xAxisLabel: string = 'Dates';
 }

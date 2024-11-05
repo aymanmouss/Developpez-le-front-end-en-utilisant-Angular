@@ -1,4 +1,6 @@
-<app-line-chart>
+<app-line-chart [view]="[700, 400]" [data]="(olympics$ | async) || []" [showLegend]="false" [showXAxis]="true"
+    [showYAxis]="true" [showXAxisLabel]="true" [showYAxisLabel]="false" [xAxisLabel]="'Date'">
+
     <h2 class="stat-title">Italy</h2>
     <div class="stat-header">
         <div class="stat-block">
@@ -6,7 +8,7 @@
             <span class="stat-value">3</span>
         </div>
         <div class="stat-block">
-            <div class="stat-block-title">Total number medals</div>
+            <div class="stat-block-title">Total number of medals</div>
             <span class="stat-value">96</span>
         </div>
         <div class="stat-block">
