@@ -30,3 +30,25 @@
     margin-left: 20px;
   }
 }
+.menu-links {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.3rem;
+  .link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    &:hover,
+    &:link,
+    &:visited,
+    &:active {
+      text-decoration: none;
+      color: #03838f;
+    }
+    .fa-circle-chevron-left {
+      margin-top: 2px;
+      margin-right: 3px;
+    }
+  }
+}
