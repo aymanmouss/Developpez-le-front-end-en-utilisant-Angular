@@ -1,4 +1,15 @@
-<h2>Olympic games app</h2>
-<hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p>
-<app-pie-chart />
+<app-pie-chart [view]="[700, 400]" [data]="(olympics$ | async) || []" [showLegend]="false" [showLabels]="true"
+    [isDoughnut]="false" [onSelect]="onSelect.bind(this)">
+
+    <h2 class="stat-title">Medals per country</h2>
+    <div class="stat-header">
+        <div class="stat-block">
+            <div class="stat-block-title">Number of JOs</div>
+            <span class="stat-value">3</span>
+        </div>
+        <div class="stat-block">
+            <div class="stat-block-title">Number of countries</div>
+            <span class="stat-value">{{(olympics$ | async)?.length}}</span>
+        </div>
+    </div>
+</app-pie-chart>

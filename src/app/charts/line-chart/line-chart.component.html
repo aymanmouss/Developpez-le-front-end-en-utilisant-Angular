@@ -1,1 +1,7 @@
-<p>line-chart works!</p>
+<div class="chart-container">
+    <ng-content></ng-content>
+    <ngx-charts-line-chart [view]="view" [scheme]="'vivid'" [results]="data" [legend]="showLegend" [xAxis]="showXAxis"
+        [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel" [autoScale]="true">
+    </ngx-charts-line-chart>
+</div>

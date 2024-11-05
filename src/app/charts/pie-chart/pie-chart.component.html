@@ -1,3 +1,12 @@
-<ngx-charts-pie-chart [view]="view" [results]="data" [legend]="showLegend" [labels]="showLabels" [doughnut]="isDoughnut"
-    [legendPosition]="legendPosition">
-</ngx-charts-pie-chart>
+<div class="chart-container">
+    <ng-content></ng-content>
+    <ngx-charts-pie-chart [view]="view" [results]="data" [legend]="showLegend" [labels]="showLabels"
+        [doughnut]="isDoughnut" [legendPosition]="legendPosition" (select)="onSelect($event)">
+        <ng-template #tooltipTemplate let-model="model">
+            <span style="font-weight: bold; font-size: large;">{{model.name}}</span>
+            <br>
+            <i class="fa-solid fa-medal" style="font-weight: bold; font-size: large;"></i>
+            <span style="font-weight: bold; font-size: large;">{{model.value}}</span>
+        </ng-template>
+    </ngx-charts-pie-chart>
+</div>
