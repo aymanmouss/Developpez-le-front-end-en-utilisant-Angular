@@ -27,10 +27,10 @@ export class DetailsComponent implements OnInit {
           );
           return [
             {
-              name: 'Medals',
+              name: this.selectedCountry,
               series:
                 selectedCountryData?.participations.map((participation) => ({
-                  name: participation.year.toString(), // Convert year to string
+                  name: participation.year.toString(),
                   value: participation.medalsCount,
                 })) || [],
             },

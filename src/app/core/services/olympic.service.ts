@@ -10,16 +10,23 @@ import { Olympic } from '../models/Olympic';
 export class OlympicService {
   private olympicUrl = './assets/mock/olympic.json';
   private olympics$ = new BehaviorSubject<Olympic[]>([]);
+  // Create an observable to store error messages
+  private error$ = new BehaviorSubject<string | null>(null);
 
   constructor(private http: HttpClient) {}
 
   loadInitialData() {
     return this.http.get<Olympic[]>(this.olympicUrl).pipe(
-      tap((value) => this.olympics$.next(value)),
+      tap((value) => {
+        this.olympics$.next(value);
+        this.error$.next(null);
+      }),
       catchError((error, caught) => {
-        // TODO: improve error handling
+        //  Add error message to display for user
+        this.error$.next('Failed to load data. Please try again later.');
+        // console log error
         console.error(error);
-        // can be useful to end loading state and let the user know something went wrong
+        // Return an empty data set if an error occurs
         this.olympics$.next([]);
         return caught;
       })
@@ -28,5 +35,8 @@ export class OlympicService {
 
   getOlympics() {
     return this.olympics$.asObservable();
+  }
+  getError() {
+    return this.error$.asObservable();
   }
 }
