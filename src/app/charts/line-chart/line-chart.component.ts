@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { LineChartData } from 'src/app/core/models/DetailsData';
 
 @Component({
   selector: 'app-line-chart',
@@ -7,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class LineChartComponent {
   @Input() view: [number, number] = [0, 0];
-  @Input() data: { name: Date; value: number }[] = [];
+  @Input() data: LineChartData[] = [];
   @Input() showLegend: boolean = false;
   @Input() showXAxis: boolean = true;
   @Input() showYAxis: boolean = true;

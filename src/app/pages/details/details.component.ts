@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
+import { DetailsData } from 'src/app/core/models/DetailsData';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
   styleUrl: './details.component.scss',
 })
 export class DetailsComponent implements OnInit {
-  public olympics$: Observable<any> = of(undefined);
+  public olympics$: Observable<DetailsData | null> = of(null);
   constructor(
     private olympicService: OlympicService,
     private route: ActivatedRoute
@@ -20,23 +21,12 @@ export class DetailsComponent implements OnInit {
       this.selectedCountry = params['country'];
     });
     if (this.selectedCountry) {
-      this.olympics$ = this.olympicService.getOlympics().pipe(
-        map((data) => {
-          const selectedCountryData = data.find(
-            (item) => item.country === this.selectedCountry
-          );
-          return [
-            {
-              name: this.selectedCountry,
-              series:
-                selectedCountryData?.participations.map((participation) => ({
-                  name: participation.year.toString(),
-                  value: participation.medalsCount,
-                })) || [],
-            },
-          ];
-        })
+      this.olympics$ = this.olympicService.getDataByCounty(
+        this.selectedCountry
       );
+      this.olympicService
+        .getDataByCounty(this.selectedCountry)
+        .subscribe((res) => console.log(res));
     }
   }
 }

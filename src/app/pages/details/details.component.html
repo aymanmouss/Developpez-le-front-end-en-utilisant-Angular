@@ -1,19 +1,19 @@
-<app-line-chart [view]="[700, 400]" [data]="(olympics$ | async) || []" [showLegend]="false" [showXAxis]="true"
+<app-line-chart [view]="[700, 400]" [data]="(olympics$ | async)?.details || []" [showLegend]="false" [showXAxis]="true"
     [showYAxis]="true" [showXAxisLabel]="true" [showYAxisLabel]="false" [xAxisLabel]="'Date'">
 
-    <h2 class="stat-title">Italy</h2>
+    <h2 class="stat-title">{{(olympics$ | async)?.selectedCountry|| []}}</h2>
     <div class="stat-header">
         <div class="stat-block">
             <div class="stat-block-title">Number of entries</div>
-            <span class="stat-value">3</span>
+            <span class="stat-value">{{(olympics$| async)?.NumberOfEntries || []}}</span>
         </div>
         <div class="stat-block">
             <div class="stat-block-title">Total number of medals</div>
-            <span class="stat-value">96</span>
+            <span class="stat-value">{{(olympics$ | async)?.TotalNumberOfMedals|| []}}</span>
         </div>
         <div class="stat-block">
             <div class="stat-block-title">Total number of athletes</div>
-            <span class="stat-value">1128</span>
+            <span class="stat-value">{{(olympics$ | async)?.TotalNumberAthletes|| []}}</span>
         </div>
     </div>
 </app-line-chart>
