@@ -24,9 +24,6 @@ export class DetailsComponent implements OnInit {
       this.olympics$ = this.olympicService.getDataByCounty(
         this.selectedCountry
       );
-      this.olympicService
-        .getDataByCounty(this.selectedCountry)
-        .subscribe((res) => console.log(res));
     }
   }
 }

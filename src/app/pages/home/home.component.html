@@ -1,6 +1,5 @@
 <app-pie-chart [view]="[700, 400]" [data]="(olympics$ | async) || []" [showLegend]="false" [showLabels]="true"
     [isDoughnut]="false" [onSelect]="onSelect.bind(this)">
-
     <h2 class="stat-title">Medals per country</h2>
     <div class="stat-header">
         <div class="stat-block">

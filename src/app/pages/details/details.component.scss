@@ -6,8 +6,12 @@
 }
 .stat-header {
   display: flex;
-  justify-content: space-around;
+  gap: 10px;
   margin-bottom: 20px;
+  @media screen and (max-width: 620px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .stat-block {
     .stat-block-title {
       color: #676767;
@@ -22,12 +26,6 @@
     .stat-value {
       font-weight: 700;
     }
-  }
-  .stat-block:first-of-type {
-    margin-right: 20px;
-  }
-  .stat-block:nth-last-of-type(1) {
-    margin-left: 20px;
   }
 }
 .menu-links {

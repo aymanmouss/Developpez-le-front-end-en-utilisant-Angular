@@ -4,3 +4,8 @@
   align-items: center;
   flex-direction: column;
 }
+::ng-deep .ngx-charts {
+  text {
+    font-size: medium;
+  }
+}
