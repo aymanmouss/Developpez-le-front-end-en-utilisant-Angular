@@ -17,9 +17,11 @@ export class DetailsComponent implements OnInit {
   ) {}
   selectedCountry: string | undefined = undefined;
   ngOnInit(): void {
+    // Retrieve the country value from the URL to use in getDataByCounty
     this.route.queryParams.subscribe((params) => {
       this.selectedCountry = params['country'];
     });
+    // Use olympicService's getDataByCounty method to fetch and display data in the chart
     if (this.selectedCountry) {
       this.olympics$ = this.olympicService.getDataByCounty(
         this.selectedCountry
